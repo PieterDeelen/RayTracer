@@ -1,4 +1,0 @@
-libpath = ['../lib']
-opt = Environment(CCFLAGS = '-O3 -g -Wall -I vector', LIBPATH=libpath)
-opt.Library('../lib/shape', ['sphere.cpp'])
-opt.Program('../bin/sphere_test', 'sphere_test.cpp' , LIBS=['vector', 'shape'])

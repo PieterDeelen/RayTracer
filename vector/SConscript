@@ -1,4 +1,0 @@
-opt = Environment(CCFLAGS = '-O3 -g -Wall', LIBPATH='../lib')
-opt.Library('../lib/vector', Split('vector4.cpp matrix4.cpp'))
-opt.Program('../bin/vector_test', ['vector_test.cpp'], LIBS='libvector')
-opt.Program('../bin/matrix_test', ['matrix_test.cpp'], LIBS='libvector')

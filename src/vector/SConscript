@@ -1,0 +1,2 @@
+Import('env')
+env.Library('vector', Split('vector4.cpp matrix4.cpp'))

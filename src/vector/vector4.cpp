@@ -23,11 +23,8 @@ namespace vector {
 	}
 
 	vector4& vector4::operator=(const vector4& v) {
-		// Check for self-assignment. Probably not necessary.
-		if (&v != this) {
-			for (int i = 0; i < 4; i++) {
-				e[i] = v.e[i];
-			}
+		for (int i = 0; i < 4; i++) {
+			e[i] = v.e[i];
 		}
 		return *this;
 	}
@@ -54,14 +51,20 @@ namespace vector {
 		return vector4(v[0] * s, v[1] * s, v[2] * s, v[3] * s);
 	}
 
-	vector4 cross(const vector4& v, const vector4& w);
-
 	scalar_t length(const vector4& v) {
 		return sqrt(dot(v, v));
 	}
 
 	vector4 normalize(const vector4& v) {
 		return scale(v, 1 / length(v));
+	}
+
+	vector4 operator *(const vector4& v, scalar_t d) {
+		return scale(v, d);
+	}
+
+	vector4 operator *(scalar_t d, const vector4& v) {
+		return scale(v, d);
 	}
 
 	std::ostream& operator<<(std::ostream& out, const vector4& v) {

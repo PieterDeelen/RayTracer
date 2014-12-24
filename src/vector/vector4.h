@@ -23,6 +23,8 @@ namespace vector {
 
 	vector4 operator+(const vector4& v, const vector4& w);
 	vector4 operator-(const vector4& v, const vector4& w);
+	vector4 operator*(const vector4& v, scalar_t d);
+	vector4 operator*(scalar_t d, const vector4& v);
 	scalar_t dot(const vector4& v, const vector4& w);
 	vector4 scale(const vector4& v, scalar_t s);
 	vector4 cross(const vector4& v, const vector4& w);

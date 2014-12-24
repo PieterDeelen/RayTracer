@@ -1,7 +1,7 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_
 
-#include "vector4.h"
+#include "vector/vector4.h"
 
 namespace shape {
 	using vector::vector4;
