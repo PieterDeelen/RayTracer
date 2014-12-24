@@ -1,7 +1,7 @@
 #ifndef _SPHERE_H_
 #define _SPHERE_H_
 
-#include <shape/Shape.h>
+#include "Shape.h"
 #include <vector/Vector.h>
 
 namespace shape {
