@@ -1,26 +1,26 @@
 #include <shape/Sphere.h>
-#include <vector/common.h>
+#include <algorithm>
 #include <cmath>
 
 namespace shape {
-	using namespace vector;
-	using namespace std;
-
-	Sphere::Sphere(Vector4 position, scalar_t radius) 
+	Sphere::Sphere(const Vector4d& position, double radius)
 		: position(position), radius(radius) {
 	}
 
-	scalar_t Sphere::intersect(Vector4 base, Vector4 direction) {
-		Vector4 p(base - position);
-		scalar_t b = dot(direction, p);
-		scalar_t c = dot(p, p) - (radius * radius);
+	double Sphere::getNearestIntersection(const Vector4d& base, const Vector4d& direction) {
+		using std::min;
+		using std::max;
 
-		scalar_t d = (b * b) - c;
+		Vector4d p(base - position);
+		double b = dot(direction, p);
+		double c = dot(p, p) - (radius * radius);
 
-		scalar_t result;
+		double d = (b * b) - c;
+
+		double result;
 		if (d >= 0) {
-			scalar_t t1 = (-b + sqrt(d));
-			scalar_t t2 = (-b - sqrt(d));
+			double t1 = (-b + sqrt(d));
+			double t2 = (-b - sqrt(d));
 
 			result = min(max(t1, 0.0), max(t2, 0.0));
 		} else {
@@ -30,7 +30,7 @@ namespace shape {
 		return result;
 	}
 
-	Vector4 Sphere::get_normal(Vector4 point) {
+	Vector4d Sphere::getNormal(const Vector4d& point) {
 		return normalize(point - position);
 	}
 }

@@ -2,20 +2,17 @@
 #define _SPHERE_H_
 
 #include <shape/Shape.h>
-#include <vector/Vector4.h>
+#include <vector/Vector.h>
 
 namespace shape {
-	using vector::Vector4;
-	using vector::scalar_t;
-
 	class Sphere : public Shape {
 	public:
-		Sphere(Vector4 position, scalar_t radius);
-		virtual scalar_t intersect(Vector4 base, Vector4 direction);
-		virtual Vector4 get_normal(Vector4 point);
+		Sphere(const Vector4d& position, double radius);
+		virtual double getNearestIntersection(const Vector4d& base, const Vector4d& direction);
+		virtual Vector4d getNormal(const Vector4d& point);
 	private:
-		Vector4 position;
-		scalar_t radius;
+		Vector4d position;
+		double radius;
 	};
 }
 

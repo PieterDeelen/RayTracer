@@ -1,16 +1,15 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_
 
-#include <vector/Vector4.h>
+#include <vector/Vector.h>
 
 namespace shape {
-	using vector::Vector4;
-	using vector::scalar_t;
-
 	class Shape {
 	public:
-		virtual scalar_t intersect(Vector4 base, Vector4 direction) = 0;
-		virtual Vector4 get_normal(Vector4 point) = 0;
+		virtual ~Shape() = default;
+
+		virtual double getNearestIntersection(const Vector4d&  base, const Vector4d& direction) = 0;
+		virtual Vector4d getNormal(const Vector4d& point) = 0;
 	};
 }
 
