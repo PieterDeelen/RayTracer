@@ -1,18 +1,17 @@
-#include "sphere.h"
-#include "vector/vector4.h"
+#include <shape/Sphere.h>
+#include <vector/common.h>
 #include <cmath>
-#include <iostream>
 
 namespace shape {
 	using namespace vector;
 	using namespace std;
 
-	sphere::sphere(vector4 position, scalar_t radius) 
+	Sphere::Sphere(Vector4 position, scalar_t radius) 
 		: position(position), radius(radius) {
 	}
 
-	scalar_t sphere::intersect(vector4 base, vector4 direction) {
-		vector4 p(base - position);
+	scalar_t Sphere::intersect(Vector4 base, Vector4 direction) {
+		Vector4 p(base - position);
 		scalar_t b = dot(direction, p);
 		scalar_t c = dot(p, p) - (radius * radius);
 
@@ -31,7 +30,7 @@ namespace shape {
 		return result;
 	}
 
-	vector4 sphere::get_normal(vector4 point) {
+	Vector4 Sphere::get_normal(Vector4 point) {
 		return normalize(point - position);
 	}
 }

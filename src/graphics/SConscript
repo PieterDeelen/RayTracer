@@ -1,9 +1,0 @@
-libpath = ['../lib']
-cflags = Split('-O3 -Wall -g -I vector')
-opt = Environment(CCFLAGS=cflags , LIBPATH=libpath)
-
-opt2 = opt.Copy()
-opt2.ParseConfig('sdl-config --cflags')
-opt2.Library('../lib/graphics', ['canvas.cpp'])
-
-opt.Program('../bin/canvas_test', 'canvas_test.cpp' , LIBS=['graphics', 'SDL'])
