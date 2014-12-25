@@ -1,1 +1,4 @@
-SConscript(['vector/SConscript'])
+Import('env')
+env.Append(CPPPATH='#external')
+env.Append(LIBPATH='../../lib')
+env.SConscript(['vector/SConscript'])

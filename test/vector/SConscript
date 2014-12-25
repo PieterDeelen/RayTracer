@@ -1,2 +1,2 @@
 Import('env')
-env.Program('Vector_test', Split('Vector_test.cpp main.cpp #/external/gtest/gtest-all.cc'), LIBS="pthread")
+env.Program('Vector_test', Split('Vector_test.cpp'), LIBS=['pthread', 'gtest', 'gtest_main'])

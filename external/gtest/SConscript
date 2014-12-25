@@ -1,0 +1,9 @@
+Import('env')
+env.Append(CPPPATH='..')
+gtest = env.Library('gtest', 'gtest-all.cc')
+gtest_main = env.Library('gtest_main', 'gtest_main.cc')
+
+# TODO: find something nicer than ../../lib
+env.Install('../../lib', gtest)
+env.Install('../../lib', gtest_main)
+

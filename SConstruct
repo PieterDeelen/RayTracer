@@ -8,25 +8,19 @@ Alias('release', 'build/release')
 Alias('all', ['build/debug', 'build/release'])
 
 def build(env, buildDir):
-    env.VariantDir(buildDir, 'src', duplicate=1)
+    env.VariantDir(buildDir + '/external', 'external', duplicate=1)
+    env.VariantDir(buildDir + '/src', 'src', duplicate=1)
+    env.VariantDir(buildDir + '/test', 'test', duplicate=1)
     Export('env')
-    SConscript(os.path.join(buildDir, 'SConscript'))
-
-def build_test(env, buildDir):
-    env.VariantDir(buildDir, 'test', duplicate=1)
-    Export('env')
-    SConscript(os.path.join(buildDir, 'SConscript'))
+    SConscript(os.path.join(buildDir, 'external', 'SConscript'))
+    SConscript(os.path.join(buildDir, 'src', 'SConscript'))
+    SConscript(os.path.join(buildDir, 'test', 'SConscript'))
 
 # Debug build.
 debug = Environment(CPPPATH=['#/src'])
 debug.Append(CCFLAGS = '-std=c++14 -O0 -g -Wall')
 debug.Append(LINKFLAGS = '-g')
 build(debug, 'build/debug')
-
-test = Environment(CPPPATH=['#/src', '#/test', '#/external'])
-test.Append(CCFLAGS = '-std=c++14 -O0 -g -Wall')
-test.Append(LINKFLAGS = '-g')
-build_test(test, 'build/test')
 
 # Release build.
 release = Environment(CPPPATH=['#/src'])
