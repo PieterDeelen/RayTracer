@@ -8,13 +8,17 @@ Alias('release', 'build/release')
 Alias('all', ['build/debug', 'build/release'])
 
 def build(env, buildDir):
-    env.VariantDir(buildDir + '/external', 'external', duplicate=1)
-    env.VariantDir(buildDir + '/src', 'src', duplicate=1)
-    env.VariantDir(buildDir + '/test', 'test', duplicate=1)
-    Export('env')
-    SConscript(os.path.join(buildDir, 'external', 'SConscript'))
-    SConscript(os.path.join(buildDir, 'src', 'SConscript'))
-    SConscript(os.path.join(buildDir, 'test', 'SConscript'))
+    env.VariantDir(buildDir + '/external', 'external', duplicate=0)
+    env.VariantDir(buildDir + '/src', 'src', duplicate=0)
+    env.VariantDir(buildDir + '/test', 'test', duplicate=0)
+    env.Replace(LINK='g++')
+    gtest = SConscript(os.path.join(buildDir, 'external/gtest', 'SConscript'), 'env')
+    src = SConscript(os.path.join(buildDir, 'src', 'SConscript'), 'env')
+    out = SConscript(os.path.join(buildDir, 'test', 'SConscript'), 'env gtest src')
+    test = Command(target = buildDir+"/testoutput",
+                   source = str(out[0]),
+                   action = str(out[0]))
+    AlwaysBuild(test)
 
 # Debug build.
 debug = Environment(CPPPATH=['#/src'])

@@ -1,2 +1,4 @@
 Import('env')
-env.Library('shape', Glob('*.cpp'))
+lib = env.Library('shape', Glob('*.cpp'))
+
+env.Install('../../lib', lib)

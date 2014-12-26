@@ -1,1 +1,6 @@
-SConscript(['vector/SConscript', 'shape/SConscript'])
+Import('env')
+env = env.Clone(CPPPATH = './')
+src = env.Library('RayTracer', Glob('**/*.cpp'))
+env.Program('RayTracer', 'main.cpp', LIBS=src)
+
+Return('src')

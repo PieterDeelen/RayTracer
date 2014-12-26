@@ -1,2 +1,0 @@
-Import('env')
-env.Program('Vector_test', Split('Vector_test.cpp'), LIBS=['pthread', 'gtest', 'gtest_main'])

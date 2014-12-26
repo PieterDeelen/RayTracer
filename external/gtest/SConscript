@@ -1,9 +1,6 @@
 Import('env')
-env.Append(CPPPATH='..')
-gtest = env.Library('gtest', 'gtest-all.cc')
-gtest_main = env.Library('gtest_main', 'gtest_main.cc')
+env = env.Clone(CPPPATH='..')
 
-# TODO: find something nicer than ../../lib
-env.Install('../../lib', gtest)
-env.Install('../../lib', gtest_main)
+gtest = env.Library('gtest', Split('gtest-all.cc gtest_main.cc'))
 
+Return('gtest')
