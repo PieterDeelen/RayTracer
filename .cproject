@@ -44,8 +44,29 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.base.689423587.174839023" name="/" resourcePath="src">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.113882881" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1079191589" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base.194388083"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.773717408" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base.1988872116">
+								<option id="gnu.cpp.compiler.option.include.paths.1037278261" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RayTracer/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RayTracer/external}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1677787750" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.169612387" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.1160768854">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.256638400" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1431767821" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base.1580409698"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.585462426" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base.607258432"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.346919586" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base.836495387">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.456094343" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
-						<entry excluding="build/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="test"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -94,8 +115,29 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<folderInfo id="cdt.managedbuild.toolchain.gnu.base.689423587.2121231624.629034906" name="/" resourcePath="src">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.base.543159954" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base" unusedChildren="">
+							<tool id="cdt.managedbuild.tool.gnu.archiver.base.1021732596" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base.847614493"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.907118193" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base.1596311137">
+								<option id="gnu.cpp.compiler.option.include.paths.1386369946" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RayTracer/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/RayTracer/external}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1038818423" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.base.162303473" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base.2028219302">
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.364532830" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.base.1421667614" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base.974999030"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.495222123" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base.320057706"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.base.556348703" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base.1329212491">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.707632652" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
 					<sourceEntries>
-						<entry excluding="build/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="test|build/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="test"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -110,9 +152,17 @@
 		<configuration configurationName="Default">
 			<resource resourceType="PROJECT" workspacePath="/RayTracer"/>
 		</configuration>
+		<configuration configurationName="Release"/>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.689423587.2121231624;cdt.managedbuild.toolchain.gnu.base.689423587.2121231624.;cdt.managedbuild.tool.gnu.c.compiler.base.2028219302;cdt.managedbuild.tool.gnu.c.compiler.input.1813748089">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.689423587.2121231624;cdt.managedbuild.toolchain.gnu.base.689423587.2121231624.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1596311137;cdt.managedbuild.tool.gnu.cpp.compiler.input.2094776231">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.toolchain.gnu.base.689423587;cdt.managedbuild.toolchain.gnu.base.689423587.196691341;cdt.managedbuild.tool.gnu.cpp.compiler.base.1988872116;cdt.managedbuild.tool.gnu.cpp.compiler.input.1960237026">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
@@ -120,5 +170,4 @@
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

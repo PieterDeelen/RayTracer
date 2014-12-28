@@ -1,5 +1,5 @@
 Import('env')
-env = env.Clone(CPPPATH = './')
+env = env.Clone(CPPPATH = ['.', '#/external'])
 src = env.Library('RayTracer', Glob('**/*.cpp'))
 env.Program('RayTracer', 'main.cpp', LIBS=src)
 

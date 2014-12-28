@@ -11,6 +11,14 @@ public:
 
 };
 
+TEST_F(Vector_test, testDefaultConstructor)
+{
+	Vector3d u;
+	ASSERT_EQ(0, u[0]);
+	ASSERT_EQ(0, u[1]);
+	ASSERT_EQ(0, u[2]);
+}
+
 TEST_F(Vector_test, testAccessors)
 {
 	ASSERT_EQ(1, v[0]);
