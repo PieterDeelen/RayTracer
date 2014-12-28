@@ -9,9 +9,9 @@ Sphere::Sphere(const Vector4d& center, double radius)
 	: center(center), radius(radius) {
 }
 
-double Sphere::getNearestIntersection(const Vector4d& base, const Vector4d& direction) const {
-	Vector4d p(base - center);
-	double b = dot(direction, p);
+double Sphere::getNearestIntersection(const Ray& ray) const {
+	Vector4d p(ray.getOrigin() - center);
+	double b = dot(ray.getDirection(), p);
 	double c = dot(p, p) - pow(radius, 2);
 	double d = pow(b, 2) - c;
 	double result;

@@ -4,6 +4,6 @@ env = env.Clone()
 env.Append(CPPPATH='#external/')
 env.Append(LIBS=[gtest, src, 'pthread'])
 
-out = env.Program('UnitTests', Glob('**/*.cpp'))
+out = env.Program('UnitTests', Glob('*.cpp'))
 
 Return('out')

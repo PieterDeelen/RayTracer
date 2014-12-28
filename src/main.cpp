@@ -4,6 +4,7 @@
 #include <iostream>
 #include <ctime>
 
+
 int main() {
 	const int width = 1200;
 	const int height = 1200;
@@ -17,9 +18,9 @@ int main() {
 		for (size_t x = 0; x < image.get_width(); ++x) {
 			double dx = (x / (width/2.0)) - 1.0;
 			double dy = (y / (height/2.0)) - 1.0;
-			const Vector4d direction = normalize(Vector4d(dx, dy, -1.0, 0.0));
+			const Ray ray(origin, {dx, dy, -1.0, 0.0});
 
-			if (sphere.getNearestIntersection(origin, direction) > 0.0) {
+			if (sphere.getNearestIntersection(ray) > 0.0) {
 				image.set_pixel(x, y, png::rgb_pixel(0xff, 0xff, 0xff));
 			} else {
 				image.set_pixel(x, y, png::rgb_pixel(0x00, 0x00, 0x00));
