@@ -2,7 +2,7 @@
 #define _SPHERE_H_
 
 #include "Shape.h"
-#include <vector/Vector.h>
+#include "Vector.h"
 
 class Sphere : public Shape {
 public:

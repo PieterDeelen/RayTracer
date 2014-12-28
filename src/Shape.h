@@ -1,7 +1,7 @@
 #ifndef _SHAPE_H_
 #define _SHAPE_H_
 
-#include "vector/Vector.h"
+#include "Vector.h"
 
 class Shape {
 public:

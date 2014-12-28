@@ -1,5 +1,5 @@
-#include "shape/Sphere.h"
-#include "vector/Vector.h"
+#include "Sphere.h"
+#include "Vector.h"
 #include <gtest/gtest.h>
 #include <iostream>
 

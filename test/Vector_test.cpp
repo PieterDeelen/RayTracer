@@ -1,4 +1,4 @@
-#include "vector/Vector.h"
+#include "Vector.h"
 #include <gtest/gtest.h>
 
 class Vector_test : public testing::Test {
