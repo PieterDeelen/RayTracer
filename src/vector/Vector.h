@@ -8,7 +8,8 @@ template<typename Type, size_t Size>
 class Vector {
 public:
 	Vector(Type elements[Size]);
-	Vector(const Vector<Type, Size>& other);
+	Vector(const Vector<Type, Size>& other) = default;
+	~Vector() = default;
 
 	Vector();
 	Vector(Type x);
@@ -39,13 +40,6 @@ template<typename Type, size_t Size>
 inline Vector<Type, Size>::Vector(Type elements[Size]) {
 	for (size_t i = 0; i < Size; i++) {
 		this->elements[i] = elements[i];
-	}
-}
-
-template<typename Type, size_t Size>
-inline Vector<Type, Size>::Vector(const Vector<Type, Size>& other) {
-	for (size_t i = 0; i < Size; i++) {
-		elements[i] = other.elements[i];
 	}
 }
 
@@ -193,7 +187,7 @@ Vector<Type, Size> normalize(const Vector<Type, Size>& v) {
 }
 
 template<typename Type, size_t Size>
-inline std::ostream& operator <<(std::ostream& out, Vector<Type, Size>& v) {
+inline std::ostream& operator <<(std::ostream& out, const Vector<Type, Size>& v) {
 	for (size_t i = 0; i < Size; i++) {
 		out << v[i] << " ";
 	}
