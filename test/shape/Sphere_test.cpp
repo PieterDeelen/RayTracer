@@ -1,6 +1,7 @@
 #include "shape/Sphere.h"
 #include "vector/Vector.h"
 #include <gtest/gtest.h>
+#include <iostream>
 
 class Sphere_test : public testing::Test {
 public:
@@ -10,9 +11,13 @@ public:
 
 };
 
-TEST_F(Sphere_test, testConstructor)
+TEST_F(Sphere_test, testGetNearestIntersection)
 {
-	shape::Sphere sphere({1, 2, 3, 4}, 5);
-	auto normal = sphere.getNormal({1, 2, 3, 4});
-
+	const Sphere sphere({0, 0, 0, 1}, 1);
+	ASSERT_EQ(9.0, sphere.getNearestIntersection({0, 0, -10, 1}, {0, 0, 1, 0}));
+	ASSERT_EQ(0.0, sphere.getNearestIntersection({0, 0, -10, 1}, {0, 0, -1, 0}));
+	ASSERT_EQ(0.0, sphere.getNearestIntersection({-1, -1, -10, 1}, {0, 0, 1, 0}));
+	ASSERT_EQ(0.0, sphere.getNearestIntersection({-1, 1, -10, 1}, {0, 0, 1, 0}));
+	ASSERT_EQ(0.0, sphere.getNearestIntersection({1, -1, -10, 1}, {0, 0, 1, 0}));
+	ASSERT_EQ(0.0, sphere.getNearestIntersection({1, 11, -10, 1}, {0, 0, 1, 0}));
 }
