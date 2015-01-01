@@ -1,22 +1,20 @@
 #ifndef _SPHERE_H_
 #define _SPHERE_H_
 
-#include "Shape.h"
+#include "SceneObject.h"
 #include "Vector.h"
 #include <memory>
 
-class Sphere : public Shape {
+class Sphere : public SceneObject {
 public:
-	Sphere(const Vector4d& center, double radius);
-	virtual double getNearestIntersection(const Ray& ray) const;
-	virtual Vector4d getNormal(const Vector4d& point) const;
+	Sphere(const Vector4d& center, double radius, const Material& material);
+	virtual boost::optional<double> getNearestIntersection(const Ray& ray) const;
+	virtual Vector4d getSurfaceNormal(const Vector4d& point) const;
+	virtual const Material& getMaterial() const;
 private:
 	Vector4d center;
 	double radius;
+	Material material;
 };
-
-inline std::unique_ptr<Sphere> makeSphere(const Vector4d& center, double radius) {
-	return std::make_unique<Sphere>(center, radius);
-}
 
 #endif //_SPHERE_H_

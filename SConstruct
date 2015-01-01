@@ -8,9 +8,9 @@ Alias('release', 'build/release')
 Alias('all', ['build/debug', 'build/release'])
 
 def build(env, buildDir):
-    env.VariantDir(buildDir + '/external', 'external', duplicate=1)
-    env.VariantDir(buildDir + '/src', 'src', duplicate=1)
-    env.VariantDir(buildDir + '/test', 'test', duplicate=1)
+    env.VariantDir(buildDir + '/external', 'external', duplicate=0)
+    env.VariantDir(buildDir + '/src', 'src', duplicate=0)
+    env.VariantDir(buildDir + '/test', 'test', duplicate=0)
     env.Replace(LINK='g++')
     gtest = SConscript(os.path.join(buildDir, 'external/gtest', 'SConscript'), 'env')
     src = SConscript(os.path.join(buildDir, 'src', 'SConscript'), 'env')
@@ -28,6 +28,6 @@ build(debug, 'build/debug')
 
 # Release build.
 release = Environment(CPPPATH=['#/src', '#/external'])
-release.Append(CCFLAGS = '-std=c++14 -O3 -march=native -mtune=native -mavx -fomit-frame-pointer `libpng-config --cflags`')
+release.Append(CCFLAGS = '-std=c++14 -O3 -g3 -march=native -mtune=native -mavx `libpng-config --cflags`')
 release.Append(LINKFLAGS = '`libpng-config --ldflags`')
 build(release, 'build/release')

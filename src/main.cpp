@@ -1,36 +1,60 @@
 #include "Sphere.h"
 #include "Vector.h"
+#include "Scene.h"
+#include "Ray.h"
+#include "Color.h"
+#include "RayTracer.h"
 #include <png++/png.hpp>
 #include <iostream>
 #include <ctime>
+#include <cmath>
 
+using png::image;
+using png::rgb_pixel;
+using std::clock;
+using std::cout;
+using std::endl;
+
+Scene createScene() {
+	Scene scene;
+	Material material = Material(Color(0, 0, 1), 0.5, 0.75, 0.5, 20);
+
+	for (int i = 0; i < 10; i++) {
+		double z = i * 10.0 + 5.0;
+		scene.add<Sphere>(Vector4d( 2.5, -2.5, z, 1), 1.5, material);
+		scene.add<Sphere>(Vector4d(-2.5, -2.5, z, 1), 1.5, material);
+		scene.add<Sphere>(Vector4d( 2.5,  2.5, z, 1), 1.5, material);
+		scene.add<Sphere>(Vector4d(-2.5,  2.5, z, 1), 1.5, material);
+	}
+
+	scene.addLight({{0.0, -10.0, -20.0, 1}, 1.0});
+
+	return scene;
+}
 
 int main() {
 	const int width = 1200;
 	const int height = 1200;
 
-	const Sphere sphere({0, 0, 0, 1}, 1);
-	const Vector4d origin(0, 0, 2.0, 1);
+	Scene scene = createScene();
+	RayTracer rayTracer(scene);
 
-	long begin = std::clock();
-	png::image<png::rgb_pixel> image(width, height);
+	long begin = clock();
+	image<rgb_pixel> image(width, height);
 	for (size_t y = 0; y < image.get_height(); ++y) {
 		for (size_t x = 0; x < image.get_width(); ++x) {
 			double dx = (x / (width/2.0)) - 1.0;
 			double dy = (y / (height/2.0)) - 1.0;
-			const Ray ray(origin, {dx, dy, -1.0, 0.0});
-
-			if (sphere.getNearestIntersection(ray) > 0.0) {
-				image.set_pixel(x, y, png::rgb_pixel(0xff, 0xff, 0xff));
-			} else {
-				image.set_pixel(x, y, png::rgb_pixel(0x00, 0x00, 0x00));
-			}
-
+			const Ray ray({0.0, 0.0, 0.0, 1.0}, {dx, dy, 1.0, 0.0});
+			Color color = rayTracer.trace(ray);
+			rgb_pixel rgbPixel = rgb_pixel(color.getRed() * 0xff,
+					color.getGreen() * 0xff, color.getBlue() * 0xff);
+			image.set_pixel(x, y, rgbPixel);
 		}
 	}
-	long end = std::clock();
+	long end = clock();
 
-	std::cout << (end - begin) / (double)CLOCKS_PER_SEC << std::endl;
+	cout << (end - begin) / (double)CLOCKS_PER_SEC << endl;
 
 	image.write("output.png");
 }

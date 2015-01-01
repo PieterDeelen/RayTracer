@@ -154,6 +154,15 @@ inline Vector<Type, Size> operator-(const Vector<Type, Size>& lhs, const Vector<
 }
 
 template<typename Type, size_t Size>
+inline Vector<Type, Size> operator-(const Vector<Type, Size>& v) {
+	Vector<Type, Size> result;
+	for (size_t i = 0; i < Size; i++) {
+		result[i] = -v[i];
+	}
+	return result;
+}
+
+template<typename Type, size_t Size>
 inline Vector<Type, Size> operator*(const Vector<Type, Size>& lhs, Type rhs) {
 	Vector<Type, Size> result;
 	for (size_t i = 0; i < Size; i++) {

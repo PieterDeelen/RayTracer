@@ -11,6 +11,13 @@ public:
 	double getGreen() const;
 	double getBlue() const;
 
+	Color& operator+=(const Color& other) {
+		red += other.red;
+		green += other.green;
+		blue += other.blue;
+		return *this;
+	}
+
 private:
 	double red;
 	double green;
@@ -32,8 +39,12 @@ inline Color operator*(const Color& lhs, double rhs) {
 	return Color(lhs.getRed() * rhs, lhs.getGreen() * rhs, lhs.getBlue() * rhs);
 }
 
-double clampColor(double value) {
-	return std::max(0.0, std::max(value, 1.0));
+inline Color operator*(double lhs, const Color& rhs) {
+	return rhs * lhs;
+}
+
+inline double clampColor(double value) {
+	return std::max(0.0, std::min(value, 1.0));
 }
 
 inline Color clamp(const Color& color) {
@@ -41,6 +52,18 @@ inline Color clamp(const Color& color) {
 			clampColor(color.getRed()),
 			clampColor(color.getGreen()),
 			clampColor(color.getBlue()));
+}
+
+inline double Color::getRed() const {
+	return red;
+}
+
+inline double Color::getGreen() const {
+	return green;
+}
+
+inline double Color::getBlue() const {
+	return blue;
 }
 
 #endif /* COLOR_CPP_ */
