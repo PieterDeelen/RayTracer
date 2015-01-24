@@ -3,7 +3,6 @@
 
 #include "Material.h"
 #include "Ray.h"
-#include <memory>
 #include <boost/optional.hpp>
 
 class SceneObject {
