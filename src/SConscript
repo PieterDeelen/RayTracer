@@ -1,6 +1,6 @@
 Import('env')
 env = env.Clone(CPPPATH = ['.', '#/external'])
-src = env.Library('RayTracer', Split('Sphere.cpp RayTracer.cpp'))
+src = env.Library('RayTracer', Split('Sphere.cpp Scene.cpp RayTracer.cpp'))
 env.Program('RayTracer', 'main.cpp', LIBS=src)
 
 Return('src')
