@@ -17,7 +17,7 @@ using std::endl;
 
 Scene createScene() {
 	Scene scene;
-	Material material = Material(Color(0, 0, 1), 0.5, 0.75, 0.5, 20);
+	Material material(Color(0, 0, 1), 0.5, 0.75, 0.5, 20);
 
 	for (int i = 0; i < 10; i++) {
 		double z = i * 10.0 + 5.0;
