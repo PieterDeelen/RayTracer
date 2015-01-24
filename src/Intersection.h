@@ -7,32 +7,32 @@
 
 class Intersection {
 public:
-	Intersection(const Ray& ray, const SceneObject* object, double t)
-		: ray(ray), object(object), t(t) {}
+	Intersection(const Ray& ray, const SceneObject& object, double t);
 
-	const SceneObject& getObject() const {
-		return *object;
-	}
+	const SceneObject& getObject() const;
+	Vector4d getPoint() const;
 
-	double getT() const {
-		return t;
-	}
-
-	Vector4d getPoint() const {
-		return ray.getPoint(t);
-	}
-
-	bool isHit() {
-		return object != nullptr;
-	}
+	bool operator<(const Intersection& other);
 
 private:
 	const Ray& ray;
-	const SceneObject* object;
-	double t;
+	const SceneObject& object;
+	const double t;
 };
 
+inline Intersection::Intersection(const Ray& ray, const SceneObject& object, double t)
+	: ray(ray), object(object), t(t) {}
 
+inline const SceneObject& Intersection::getObject() const {
+	return object;
+}
 
+inline Vector4d Intersection::getPoint() const {
+	return ray.getPoint(t);
+}
+
+inline bool Intersection::operator<(const Intersection& other) {
+	return t < other.t;
+}
 
 #endif /* INTERSECTION_H_ */
