@@ -1,3 +1,3 @@
 RayTracer
 =========
-A simple ray tracer, programmed in C++.
+A simple ray tracer, developed in C++.
